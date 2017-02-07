@@ -80,11 +80,8 @@ for key, value in result[4].items():
 # Plots
 acrand_fig = plt.figure(1)
 ac_plot(series)
+plt.xscale('log')
 acrand_fig.suptitle('Autocorrellation of Random Numbers')
-
-acrw_fig = plt.figure(3)
-ac_plot(random_walk)
-acrw_fig.suptitle('Autocorrellation of Random Walk')
 
 rwfig = plt.figure(2)
 plt.plot(random_walk)
@@ -92,10 +89,19 @@ rwfig.suptitle('Random Walk Sequence')
 plt.xlabel('Period')
 plt.ylabel('Measurement')
 
-diff_fig = plt.figure()
-plt.plot(diff)
+acrw_fig = plt.figure(3)
+ac_plot(random_walk)
+acrw_fig.suptitle('Autocorrellation of Random Walk')
 
-acdiff_fig = plt.figure()
+diff_fig = plt.figure(4)
+plt.plot(diff)
+diff_fig.suptitle('Stationary Series from Differencing (lag=1)')
+plt.ylim(-1.2, 1.2)
+plt.xlim(0, 100)
+plt.xlabel('Period')
+
+acdiff_fig = plt.figure(5)
 ac_plot(diff)
+acdiff_fig.suptitle('Autocorrellation of Differenced Stationary Series')
 
 plt.show()
